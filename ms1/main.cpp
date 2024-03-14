@@ -14,10 +14,11 @@
 #include "Time.h"
 #include "Utils.h"
 using namespace seneca;
-using namespace std; 
+using namespace std;
 void menuTester();
 void timeTester();
-int main() {
+int main()
+{
    cout << "Menu tester -----------------------------------------" << endl;
    menuTester();
    cout << "Time tester -----------------------------------------" << endl;
@@ -25,30 +26,38 @@ int main() {
    return 0;
 }
 
-
-void menuTester() {
+void menuTester()
+{
    Menu m("Tester Options menu:\n1- Option one\n2- Option two");
    int selection;
    cout << "Enter the following values:\nabc\n1 (with a space after 1)\n1\n0\n2\n3\n-1\n0\n----------------------------\n";
-   while (m >> selection) {
-      switch (selection) {
-      case 1: {
+   while (m >> selection)
+   {
+      switch (selection)
+      {
+      case 1:
+      {
          Menu sub_menu("Sub-menu of option one!\n1- sub one\n2- sub two\n3- sub two\n4- sub two", 1);
-         switch (sub_menu >> selection) {
+         switch (sub_menu >> selection)
+         {
          case 1:
-            cout << "   sub menu one selected" << endl << endl;
+            cout << "   sub menu one selected" << endl
+                 << endl;
             break;
          case 2:
-            cout << "   sub menu two selected" << endl << endl;
+            cout << "   sub menu two selected" << endl
+                 << endl;
             break;
          case 0:
-            cout << "   sub menu exit selected" << endl << endl;
+            cout << "   sub menu exit selected" << endl
+                 << endl;
             break;
          }
          break;
       }
       case 2:
-         cout << "option two selected" << endl << endl;
+         cout << "option two selected" << endl
+              << endl;
          break;
       default:
          cout << "This will never happen!!!!" << endl;
@@ -57,14 +66,17 @@ void menuTester() {
    }
    cout << "goodbye!" << endl;
 }
-Time readTime() {
+Time readTime()
+{
    Time E;
    bool done;
    cout << "Time\n> ";
-   do {
+   do
+   {
       done = true;
       cin >> E;
-      if (cin.fail()) {
+      if (cin.fail())
+      {
          cin.clear();
          cin.ignore(1000, '\n');
          done = false;
@@ -73,26 +85,30 @@ Time readTime() {
    } while (!done);
    return E;
 }
-void timeTester() {
+void timeTester()
+{
    seneca::debug = false;
    Time D(1385), C(65), E;
    cout << "E: " << E << endl;
    cout << "D: " << D << endl;
    cout << "C: " << C << endl;
-   cout << endl << "operator-= ................." << endl;
+   cout << endl
+        << "operator-= ................." << endl;
    cout << "  D        C      D-=C" << endl;
    cout << D << " -= " << C << " = ";
    cout << (D -= C) << endl;
    cout << "  C        D      C-=D" << endl;
    cout << C << " -= " << D << " = ";
    cout << (C -= D) << endl;
-   cout << endl << "operator- .................." << endl;
+   cout << endl
+        << "operator- .................." << endl;
    cout << "  C       D      C-D" << endl;
    cout << C << " - " << D << " = ";
    cout << (C - D) << endl;
    cout << "  C        D" << endl;
    cout << C << "    " << D << endl;
-   cout << endl << "operator*= ................." << endl;
+   cout << endl
+        << "operator*= ................." << endl;
    cout << "C: " << C << endl;
    cout << " C *= 2" << endl;
    cout << (C *= 2) << endl;

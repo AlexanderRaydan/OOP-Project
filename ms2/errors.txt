@@ -1,0 +1,8 @@
+/tmp/ccPdmwB6.o: In function `main':
+/home/adraydan-gonzalez/OOP/ms2/main.cpp:84: undefined reference to `seneca::operator<<(std::ostream&, seneca::IOAble&)'
+/home/adraydan-gonzalez/OOP/ms2/main.cpp:90: undefined reference to `seneca::operator<<(std::ostream&, seneca::IOAble&)'
+/home/adraydan-gonzalez/OOP/ms2/main.cpp:91: undefined reference to `seneca::operator<<(std::ostream&, seneca::IOAble&)'
+/home/adraydan-gonzalez/OOP/ms2/main.cpp:98: undefined reference to `seneca::operator<<(std::ostream&, seneca::IOAble&)'
+/home/adraydan-gonzalez/OOP/ms2/main.cpp:100: undefined reference to `seneca::operator<<(std::ostream&, seneca::IOAble&)'
+/tmp/ccPdmwB6.o:/home/adraydan-gonzalez/OOP/ms2/main.cpp:102: more undefined references to `seneca::operator<<(std::ostream&, seneca::IOAble&)' follow
+collect2: error: ld returned 1 exit status
