@@ -13,46 +13,58 @@
 #include <fstream>
 #include "Patient.h"
 #include "TestPatient.h"
-#include "utils.h"
+#include "Utils.h"
 using namespace std;
 using namespace seneca;
-int main() {
+int main()
+{
    ifstream input("input.txt");
    U.setDebugTime(12, 34);
    TestPatient A, B;
    cout << "Testing TestPatient:" << endl
-      << "Enter the following values when prompted:" << endl
-      << "aaa" << endl
-      << "123123123" << endl
-      << "------------------------" << endl << endl;
+        << "Enter the following values when prompted:" << endl
+        << "aaa" << endl
+        << "123123123" << endl
+        << "------------------------" << endl
+        << endl;
    A.setArrivalTime();
    cout << "Enter Patient information:" << endl;
    cin >> A;
-   cout << endl << "Enter the following values when prompted:" << endl
-      << "bbb" << endl
-      << "234234234" << endl
-      << "------------------------" << endl << endl;
+   cout << endl
+        << "Enter the following values when prompted:" << endl
+        << "bbb" << endl
+        << "234234234" << endl
+        << "------------------------" << endl
+        << endl;
    B.setArrivalTime();
    cout << "Enter Patient information:" << endl;
    cin >> B;
-   cout << endl << "Patients information entered:" << endl;
-   cout << A << endl << B << endl;
+   cout << endl
+        << "Patients information entered:" << endl;
+   cout << A << endl
+        << B << endl;
    cout << "CSV output:" << endl;
-   cerr << A << endl << B << endl << endl;
+   cerr << A << endl
+        << B << endl
+        << endl;
    cout << "Linear output:" << endl;
-   clog << A << endl << B << endl << endl;
+   clog << A << endl
+        << B << endl
+        << endl;
    cout << "Testing CSV input;" << endl
-      << "   Reading \"ccc,333333333,10,23:45\" from input.txt." << endl;
+        << "   Reading \"ccc,333333333,10,23:45\" from input.txt." << endl;
    input >> A;
    input.ignore(100, '\n');
-   cout << endl << "Data read:" << endl;
+   cout << endl
+        << "Data read:" << endl;
    cout << A << endl;
    U.setDebugTime(23, 55);
    cout << "Testing global ticket number variable:" << endl
-      << "Enter the following values when prompted:" << endl
-      << "ddd" << endl
-      << "345345345" << endl
-      << "------------------------" << endl << endl;
+        << "Enter the following values when prompted:" << endl
+        << "ddd" << endl
+        << "345345345" << endl
+        << "------------------------" << endl
+        << endl;
    TestPatient C;
    C.setArrivalTime();
    cin >> C;

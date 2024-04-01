@@ -1,32 +1,40 @@
 #include <iostream>
 #include "Ticket.h"
 using namespace std;
-namespace seneca {
-   Ticket::Ticket(int number) {
+namespace seneca
+{
+   Ticket::Ticket(int number)
+   {
       m_number = number;
    }
    Time Ticket::time() const
    {
       return m_time;
    }
-   int Ticket::number() const {
+   int Ticket::number() const
+   {
       return m_number;
    }
-   void Ticket::resetTime() {
+   void Ticket::resetTime()
+   {
       m_time.reset();
    }
-   std::ostream& Ticket::write(std::ostream& ostr) const {
-      if (&ostr != &cout) {
+   std::ostream &Ticket::write(std::ostream &ostr) const
+   {
+      if (&ostr != &cout)
+      {
          ostr << m_number << "," << m_time;
       }
-      else {
+      else
+      {
          ostr << "Ticket No: " << m_number << ", Issued at: " << m_time;
       }
-      return  ostr;
+      return ostr;
    }
-   std::istream& Ticket::read(std::istream& istr) {
+   std::istream &Ticket::read(std::istream &istr)
+   {
       istr >> m_number;
-      istr.ignore();
+      istr.ignore(1, ',');
       return istr >> m_time;
    }
 }

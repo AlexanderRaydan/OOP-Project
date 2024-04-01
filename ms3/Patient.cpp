@@ -134,7 +134,6 @@ namespace seneca
             else
             {
                 ostr << type() << "," << m_name << "," << m_ohip << ",";
-                m_ticket.write(ostr);
             }
         }
         return ostr;
