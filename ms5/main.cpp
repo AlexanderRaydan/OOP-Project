@@ -15,34 +15,42 @@
 #include "Utils.h"
 using namespace std;
 using namespace seneca;
-void copyFile(const char* des, const char* src) {
+void copyFile(const char *des, const char *src)
+{
    ifstream infile(src);
    ofstream outfile(des);
-   if (outfile) {
+   if (outfile)
+   {
       char ch;
-      while (infile.get(ch)) {
+      while (infile.get(ch))
+      {
          outfile.put(ch);
       }
    }
 }
-void displayFile(const char* fname) {
+void displayFile(const char *fname)
+{
    ifstream fin(fname);
    char ch;
-   cout << endl << "******  Content of file: \"" << fname << "\":" << endl;
-   while (fin.get(ch)) cout << ch;
-   cout << "***************************************************" << endl << endl;
+   cout << endl
+        << "******  Content of file: \"" << fname << "\":" << endl;
+   while (fin.get(ch))
+      cout << ch;
+   cout << "***************************************************" << endl
+        << endl;
 }
-void theApp( ) {
-   PreTriage P( "smalldata.csv" );
-   P.run( );
+void theApp()
+{
+   PreTriage P("smalldata.csv");
+
+   P.run();
 }
-int main() {
-   copyFile( "smalldata.csv", "smalldata.csv.bak" );
+int main()
+{
+   copyFile("smalldata.csv", "smalldata.csv.bak");
    seneca::debug = true;
    U.setDebugTime(8, 41);
    theApp();
-   displayFile( "smalldata.csv" );
+   displayFile("smalldata.csv");
    return 0;
 }
-
-

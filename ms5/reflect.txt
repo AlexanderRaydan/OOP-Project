@@ -1,0 +1,33 @@
+/*
+////////////////////////////////////////////////////////////////////////////
+
+                             MS51 - reflection
+
+Full Name  : Alexander David Raydan Gonzalez
+Student ID#: 124348236
+Email      : adraydan-gonzalez@myseneca.ca
+Section    : ZRA
+
+Authenticity Declaration:
+
+I have done all the coding by myself and only copied the code that my professor
+provided to complete my workshops and assignments.
+///////////////////////////////////////////////////////////////////////////
+*/
+
+Throughout the development of the "General Healthcare Facility Pre-Triage Application," 
+I gained a deeper understanding of object-oriented programming concepts in C++, especially 
+regarding class design and inheritance. Implementing classes for managing patients, 
+utilizing polymorphism, and handling dynamic memory allocation provided practical 
+insights into these concepts.
+
+One of the main challenges I faced was managing memory effectively to prevent memory 
+leaks and ensure program stability. By carefully implementing copy constructors, 
+copy assignment operators, and destructors, I was able to address this challenge and 
+maintain proper memory management throughout the application. Additionally read and 
+write a file with 3 types of information depend of the class, Time, TriagePatient 
+and TestPatient.
+ 
+
+
+
