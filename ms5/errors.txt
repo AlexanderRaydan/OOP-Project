@@ -1,4 +1,7 @@
-PreTriage.cpp: In member function ‘void seneca::PreTriage::save()’:
-PreTriage.cpp:187:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-         for (int i = 0; i < m_numberOfPatientsLineup; i++)
-                             ^
+PreTriage.cpp: In member function ‘void seneca::PreTriage::viewLineup()’:
+PreTriage.cpp:210:41: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                     for (int i = 0; i < m_numberOfPatientsLineup; i++)
+                                         ^
+PreTriage.cpp:232:41: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                     for (int i = 0; i < m_numberOfPatientsLineup; i++)
+                                         ^

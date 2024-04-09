@@ -29,6 +29,9 @@ namespace seneca
         std::istream &read(std::istream &istr);
         operator unsigned int() const;
         Time &operator*=(int val);
+        Time operator*(const Time &T) const;
+        Time &operator+=(int val);
+        Time operator+(const Time &T) const;
         Time &operator-=(const Time &D);
         Time operator-(const Time &T) const;
     };

@@ -67,10 +67,30 @@ namespace seneca
         return m_minutes;
     }
 
+    Time &Time::operator+=(int val)
+    {
+        m_minutes += val;
+        return *this;
+    }
+
+    Time Time::operator+(const Time &T) const
+    {
+        Time temp(*this);
+        temp += T;
+        return temp;
+    }
+
     Time &Time::operator*=(int val)
     {
         m_minutes *= val;
         return *this;
+    }
+
+    Time Time::operator*(const Time &T) const
+    {
+        Time temp(*this);
+        temp *= T;
+        return temp;
     }
 
     Time &Time::operator-=(const Time &D)

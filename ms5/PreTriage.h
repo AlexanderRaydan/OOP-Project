@@ -39,8 +39,9 @@ namespace seneca
 
         void save();
         // void registerPatient();
-        // void admitPatient();
-        // void viewLineup();
+        void admitPatient();
+        void viewLineup();
+        Time getWaitTime(const Patient &patient) const;
 
     public:
         PreTriage();

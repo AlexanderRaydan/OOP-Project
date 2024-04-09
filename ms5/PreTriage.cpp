@@ -21,6 +21,7 @@ who gave it to you, or from what source you acquired it.
 #include "TriagePatient.h"
 #include "TestPatient.h"
 #include "Menu.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -192,6 +193,125 @@ namespace seneca
         cout << testPatientCount << " Contagion Tests and " << triagePatientCount << " Triage records were saved!" << endl;
     }
 
+    void PreTriage::viewLineup()
+    {
+        Menu m("Select The Lineup:\n1- Contagion Test\n2- Triage", 1);
+        int selection;
+
+        while (m >> selection)
+        {
+            switch (selection)
+            {
+            case 1:
+                if (m_numberOfPatientsLineup > 0)
+                {
+                    int j = 1;
+                    cout << "Row - Patient name                                          OHIP     Tk #  Time" << endl;
+                    cout << "-------------------------------------------------------------------------------" << endl;
+                    for (unsigned int i = 0; i < m_numberOfPatientsLineup; i++)
+                    {
+                        if (m_lineup[i]->type() == 'C')
+                        {
+                            clog << j++ << "   - ";
+                            clog << *m_lineup[i] << endl;
+                        }
+                    }
+                    cout << "-------------------------------------------------------------------------------" << endl;
+                }
+                else
+                {
+                    cout << "Line up is empty!" << endl;
+                }
+                return;
+            case 2:
+                if (m_numberOfPatientsLineup > 0)
+                {
+                    int j = 1;
+                    cout << "Row - Patient name                                          OHIP     Tk #  Time" << endl;
+                    cout << "-------------------------------------------------------------------------------" << endl;
+
+                    for (unsigned int i = 0; i < m_numberOfPatientsLineup; i++)
+                    {
+                        if (m_lineup[i]->type() == 'T')
+                        {
+                            clog << j++ << "   - ";
+                            clog << *m_lineup[i] << endl;
+                        }
+                    }
+                    cout << "-------------------------------------------------------------------------------" << endl;
+                }
+                else
+                {
+                    cout << "Line up is empty!" << endl;
+                }
+                return;
+            case 0:
+                return;
+            default:
+                return;
+            }
+        }
+    }
+
+    void PreTriage::admitPatient()
+    {
+        Menu m("Select Type of Admittance:\n1- Contagion Test\n2- Triage", 1);
+        int selection;
+
+        m >> selection;
+
+        if (m_numberOfPatientsLineup == 0)
+        {
+            cout << "Line up is empty!" << endl;
+            return;
+        }
+
+        char type = selection == 1 ? 'C' : 'T';
+
+        cout << endl
+             << "******************************************" << endl;
+
+        for (unsigned int i = 0; i < m_numberOfPatientsLineup; i++)
+        {
+            if (m_lineup[i]->type() == type)
+            {
+
+                cout << "Call time: [" << (Time(U.getTime())) << "]" << endl;
+                cout << "Calling at for " << *m_lineup[i];
+                m_lineup[i]->setArrivalTime();
+
+                delete m_lineup[i];
+                m_lineup[i] = nullptr;
+
+                for (unsigned int j = i; j < (m_numberOfPatientsLineup - 1); j++)
+                {
+                    m_lineup[j] = m_lineup[j + 1];
+                }
+
+                m_numberOfPatientsLineup--;
+                cout << "******************************************" << endl
+                     << endl;
+                return;
+            }
+        }
+    }
+
+    Time PreTriage::getWaitTime(const Patient &patient) const
+    {
+        int count = 0;
+        for (unsigned int i = 0; i < m_numberOfPatientsLineup; i++)
+        {
+            if (m_lineup[i]->type() == patient.type())
+            {
+                count++;
+            }
+        }
+
+        Time averageTime = patient.type() == 'C' ? m_averageTimeContagionTest : m_averageTimeTriage;
+
+        return Time((int)averageTime * count);
+    }
+
     void PreTriage::run()
     {
         Menu m("General Healthcare Facility Pre-Triage Application\n1- Register\n2- Admit\n3- View Lineup");
@@ -206,10 +326,10 @@ namespace seneca
                 // registerPatient();
                 break;
             case 2:
-                // admitPatient();
+                admitPatient();
                 break;
             case 3:
-                // viewLineup();
+                viewLineup();
                 break;
             case 0:
                 cout << "Exiting Pre-Triage application...\n";
