@@ -296,6 +296,46 @@ namespace seneca
         }
     }
 
+    void PreTriage::registerPatient()
+    {
+
+        if (m_numberOfPatientsLineup >= MAXIMUM_LINEUP_VALUE)
+        {
+            cout << "Line up full!" << endl;
+            return;
+        }
+        Menu m("Select Type of Registration:\n1- Contagion Test\n2- Triage", 1);
+        int selection;
+
+        m >> selection;
+
+        Patient *patient = nullptr;
+
+        if (selection == 1)
+        {
+            patient = new TestPatient();
+        }
+        else
+        {
+            patient = new TriagePatient();
+        }
+
+        cout << "Please enter patient information: " << endl;
+
+        patient->read(cin);
+        patient->setArrivalTime();
+
+        cout << endl
+             << "******************************************" << endl;
+        cout << *patient;
+        cout << "Estimated Wait Time: " << getWaitTime(*patient) << endl;
+        cout << "******************************************" << endl
+             << endl;
+
+        m_lineup[m_numberOfPatientsLineup] = patient;
+        m_numberOfPatientsLineup++;
+    }
+
     Time PreTriage::getWaitTime(const Patient &patient) const
     {
         int count = 0;
@@ -309,7 +349,7 @@ namespace seneca
 
         Time averageTime = patient.type() == 'C' ? m_averageTimeContagionTest : m_averageTimeTriage;
 
-        return Time((int)averageTime * count);
+        return Time((int)averageTime * (count));
     }
 
     void PreTriage::run()
@@ -323,7 +363,7 @@ namespace seneca
             {
 
             case 1:
-                // registerPatient();
+                registerPatient();
                 break;
             case 2:
                 admitPatient();

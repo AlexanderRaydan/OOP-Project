@@ -79,6 +79,12 @@ namespace seneca
         return *this;
     }
 
+    Time &Time::operator+=(int val)
+    {
+        m_minutes += val;
+        return *this;
+    }
+
     Time &Time::operator-=(const Time &D)
     {
         int diff = m_minutes - D.m_minutes;

@@ -16,6 +16,7 @@ who gave it to you, or from what source you acquired it.
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <string>
 
 namespace seneca
 {
@@ -144,9 +145,9 @@ namespace seneca
         {
             istr.clear();
             std::cout << "Name: ";
-            char tempName[51] = {0};
-            istr >> tempName;
             istr.ignore(10000, '\n');
+            char tempName[51];
+            istr.getline(tempName, 51);
 
             // Allocate memory for name and copy
             delete[] m_name;

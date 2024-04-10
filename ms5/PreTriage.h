@@ -38,7 +38,7 @@ namespace seneca
         void load();
 
         void save();
-        // void registerPatient();
+        void registerPatient();
         void admitPatient();
         void viewLineup();
         Time getWaitTime(const Patient &patient) const;
